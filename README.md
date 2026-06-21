@@ -1,6 +1,6 @@
 # AI Interview Platform
 
-An AI-powered interview preparation platform built using the MERN Stack.
+An AI-powered interview preparation platform built with the MERN Stack that helps users prepare for technical interviews through authentication, interview management, AI-generated questions, and personalized interview sessions.
 
 ## Features Implemented
 
@@ -72,6 +72,15 @@ Authenticates the user and returns a JWT token.
 ![Create Interview API](screenshots/create-interview-api.png)
 
 Creates an interview record using JWT authentication and stores it in MongoDB.
+
+
+# Future Enhancements
+
+* AI-powered Question Generation
+* Resume Parsing and Analysis
+* Voice-based Mock Interviews
+* Performance Feedback System
+* Full MERN Dashboard
 
 ## Author
 
