@@ -49,8 +49,33 @@ Currently working on:
 * Frontend Integration
 * Resume Analysis
 
+## Screenshots
+
+### User Registration API
+
+![Register API](screenshots/register-api.png)
+
+Creates a new user account successfully.
+
+---
+
+### User Login API
+
+![Login API](screenshots/login-api.png)
+
+Authenticates the user and returns a JWT token.
+
+---
+
+### Create Interview API (Protected Route)
+
+![Create Interview API](screenshots/create-interview-api.png)
+
+Creates an interview record using JWT authentication and stores it in MongoDB.
+
 ## Author
 
 Liean J Chacko
 B.Tech Computer Science Engineering
 CUSAT
+    
