@@ -10,8 +10,11 @@ An AI-powered interview preparation platform built with the MERN Stack that help
 * Protected Routes
 * Get Current User API
 * Create Interview API
+* Get All Interviews API
+* Get Interview By ID API
 * MongoDB Integration
 * Password Hashing with bcrypt
+* RESTful API Architecture
 
 ## Tech Stack
 
@@ -37,16 +40,23 @@ GET /api/users/me
 ### Interview Routes
 
 POST /api/interviews
-
+GET	/api/interviews	
+GET	/api/interviews/
 ## Project Status
 
-Backend Authentication Module Completed.
+### Completed
+* User Authentication Module
+* JWT Authorization
+* Interview Creation API
+* Get All Interviews API
+* Get Interview By ID API
+* MongoDB Integration
+* Delete Interview API
 
-Currently working on:
-
+### Currently Working On
+* Gemini AI Integration
 * AI Question Generation
-* Interview Session APIs
-* Frontend Integration
+* Frontend Integration (React)
 * Resume Analysis
 
 ## Screenshots
@@ -74,13 +84,6 @@ Authenticates the user and returns a JWT token.
 Creates an interview record using JWT authentication and stores it in MongoDB.
 
 
-# Future Enhancements
-
-* AI-powered Question Generation
-* Resume Parsing and Analysis
-* Voice-based Mock Interviews
-* Performance Feedback System
-* Full MERN Dashboard
 
 ## Author
 
