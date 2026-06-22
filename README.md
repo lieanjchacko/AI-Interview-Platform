@@ -40,8 +40,11 @@ GET /api/users/me
 ### Interview Routes
 
 POST /api/interviews
-GET	/api/interviews	
-GET	/api/interviews/
+
+GET	/api/interviews
+
+GET	/api/interviews
+
 ## Project Status
 
 ### Completed
