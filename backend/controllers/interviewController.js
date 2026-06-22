@@ -57,7 +57,65 @@ const getInterviews = async (req, res) => {
 
   }
 };
+//Get Interview By ID
+const getInterviewById = async (req, res) => {
+  try {
+
+    const interview = await Interview.findById(req.params.id);
+
+    if (!interview) {
+      return res.status(404).json({
+        success: false,
+        message: "Interview not found"
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      interview
+    });
+
+  } catch (error) {
+
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+
+  }
+};
+//Delete Interview API
+const deleteInterview = async (req, res) => {
+  try {
+
+    const interview = await Interview.findById(req.params.id);
+
+    if (!interview) {
+      return res.status(404).json({
+        success: false,
+        message: "Interview not found"
+      });
+    }
+
+    await interview.deleteOne();
+
+    res.status(200).json({
+      success: true,
+      message: "Interview deleted successfully"
+    });
+
+  } catch (error) {
+
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+
+  }
+};
 module.exports = {
   createInterview,
   getInterviews,
+  getInterviewById,
+  deleteInterview,
 };
