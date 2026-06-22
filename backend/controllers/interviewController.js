@@ -34,7 +34,30 @@ const createInterview = async (req, res) => {
     });
   }
 };
+// GET ALL INTERVIEWS
+const getInterviews = async (req, res) => {
+  try {
 
+    const interviews = await Interview.find({
+      createdBy: req.user.id
+    });
+
+    res.status(200).json({
+      success: true,
+      count: interviews.length,
+      interviews
+    });
+
+  } catch (error) {
+
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+
+  }
+};
 module.exports = {
   createInterview,
+  getInterviews,
 };
