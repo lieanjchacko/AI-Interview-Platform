@@ -22,6 +22,10 @@ const interviewSchema = new mongoose.Schema(
       default: 10,
     },
 
+    questions: {
+     type: String
+    },
+
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
