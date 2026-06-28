@@ -1,0 +1,67 @@
+import { useEffect, useState } from "react";
+import api from "../services/api";
+import Navbar from "../components/Navbar";
+
+function Dashboard() {
+  const [interviews, setInterviews] = useState([]);
+
+  useEffect(() => {
+    fetchInterviews();
+  }, []);
+
+  const fetchInterviews = async () => {
+    try {
+      const res = await api.get("/interviews");
+
+      setInterviews(res.data.interviews);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  return (
+    <div>
+      <Navbar />
+
+      <h1>Dashboard</h1>
+
+      <hr />
+
+      <h2>Your Interviews</h2>
+
+      {interviews.length === 0 ? (
+        <p>No interviews found.</p>
+      ) : (
+        interviews.map((interview) => (
+          <div
+            key={interview._id}
+            style={{
+              border: "1px solid gray",
+              margin: "15px",
+              padding: "15px",
+              borderRadius: "10px",
+            }}
+          >
+            <h3>{interview.jobRole}</h3>
+
+            <p>
+              <strong>Experience:</strong> {interview.experience}
+            </p>
+
+            <p>
+              <strong>Tech Stack:</strong>{" "}
+              {interview.techStack.join(", ")}
+            </p>
+
+            <p>
+              <strong>Questions:</strong>{" "}
+              {interview.numberOfQuestions}
+            </p>
+          </div>
+        ))
+      )}
+    </div>
+  );
+}
+
+export default Dashboard;

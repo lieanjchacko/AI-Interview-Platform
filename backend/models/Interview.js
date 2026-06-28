@@ -22,9 +22,14 @@ const interviewSchema = new mongoose.Schema(
       default: 10,
     },
 
-    questions: {
-     type: String
-    },
+    questions: [
+      {
+        question: {
+          type: String,
+          required: true,
+        },
+      },
+    ],
 
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,

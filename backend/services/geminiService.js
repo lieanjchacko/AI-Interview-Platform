@@ -1,55 +1,52 @@
-const { GoogleGenerativeAI } = require("@google/generative-ai");
+const { GoogleGenAI } = require("@google/genai");
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+const ai = new GoogleGenAI({
+  apiKey: process.env.GEMINI_API_KEY,
+});
 
-const generateQuestions = async (
-  jobRole,
+const generateInterviewQuestions = async (
+  role,
   experience,
   techStack,
   numberOfQuestions
 ) => {
-  try {
-    const model = genAI.getGenerativeModel({
-      model: "gemini-2.0-flash",
-    });
+  const prompt = `
+Generate ${numberOfQuestions} interview questions.
 
-    const prompt = `
-Generate ${numberOfQuestions} technical interview questions.
-
-Job Role: ${jobRole}
+Role: ${role}
 Experience: ${experience}
-Tech Stack: ${techStack.join(", ")}
+Tech Stack: ${techStack}
 
-Return only the questions as a numbered list.
+Return ONLY a JSON array.
+
+Example:
+
+[
+  {
+    "question":"What is React?"
+  },
+  {
+    "question":"Explain JWT."
+  }
+]
 `;
 
-    console.log("Using Gemini AI...");
+  const response = await ai.models.generateContent({
+    model: "gemini-2.5-flash",
+    contents: prompt,
+  });
 
-    const result = await model.generateContent(prompt);
+  const text = response.text;
 
-    return result.response.text();
+  // Remove markdown if Gemini wraps the JSON
+  const cleaned = text
+    .replace(/```json/g, "")
+    .replace(/```/g, "")
+    .trim();
 
-  } catch (error) {
-
-    console.log("Gemini unavailable. Using mock interview questions.");
-
-    const mockQuestions = [
-      "1. What is React and why is it used?",
-      "2. Explain the Virtual DOM.",
-      "3. What is Node.js?",
-      "4. Difference between SQL and MongoDB.",
-      "5. What is JWT Authentication?",
-      "6. Explain Express middleware.",
-      "7. What are React Hooks?",
-      "8. Explain async/await in JavaScript.",
-      "9. What is REST API?",
-      "10. Difference between authentication and authorization."
-    ];
-
-    return mockQuestions
-      .slice(0, numberOfQuestions)
-      .join("\n");
-  }
+  return JSON.parse(cleaned);
 };
 
-module.exports = generateQuestions;
+module.exports = {
+  generateInterviewQuestions,
+};

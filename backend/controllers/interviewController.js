@@ -1,5 +1,7 @@
 const Interview = require("../models/Interview");
-const generateQuestions = require("../services/geminiService");
+const {
+  generateInterviewQuestions,
+} = require("../services/geminiService");
 
 // CREATE INTERVIEW
 const createInterview = async (req, res) => {
@@ -17,7 +19,7 @@ const createInterview = async (req, res) => {
       
     } = req.body;
 
-    const questions = await generateQuestions(
+    const questions = await generateInterviewQuestions(
       jobRole,
       experience,
       techStack,
