@@ -71,7 +71,10 @@ const getInterviews = async (req, res) => {
 const getInterviewById = async (req, res) => {
   try {
 
-    const interview = await Interview.findById(req.params.id);
+    const interview = await Interview.findOne({
+      _id: req.params.id,
+      createdBy: req.user.id
+    });
 
     if (!interview) {
       return res.status(404).json({
@@ -98,7 +101,10 @@ const getInterviewById = async (req, res) => {
 const deleteInterview = async (req, res) => {
   try {
 
-    const interview = await Interview.findById(req.params.id);
+    const interview = await Interview.findOne({
+      _id: req.params.id,
+      createdBy: req.user.id
+    });
 
     if (!interview) {
       return res.status(404).json({
