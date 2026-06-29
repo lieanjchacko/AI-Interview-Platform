@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import api from "../services/api";
 import Navbar from "../components/Navbar";
@@ -12,7 +13,6 @@ function Dashboard() {
   const fetchInterviews = async () => {
     try {
       const res = await api.get("/interviews");
-
       setInterviews(res.data.interviews);
     } catch (err) {
       console.error(err);
@@ -33,31 +33,41 @@ function Dashboard() {
         <p>No interviews found.</p>
       ) : (
         interviews.map((interview) => (
-          <div
+          <Link
             key={interview._id}
+            to={`/interview/${interview._id}`}
             style={{
-              border: "1px solid gray",
-              margin: "15px",
-              padding: "15px",
-              borderRadius: "10px",
+              textDecoration: "none",
+              color: "inherit",
             }}
           >
-            <h3>{interview.jobRole}</h3>
+            <div
+              style={{
+                border: "1px solid gray",
+                margin: "15px",
+                padding: "15px",
+                borderRadius: "10px",
+                cursor: "pointer",
+                transition: "0.3s",
+              }}
+            >
+              <h3>{interview.jobRole}</h3>
 
-            <p>
-              <strong>Experience:</strong> {interview.experience}
-            </p>
+              <p>
+                <strong>Experience:</strong> {interview.experience}
+              </p>
 
-            <p>
-              <strong>Tech Stack:</strong>{" "}
-              {interview.techStack.join(", ")}
-            </p>
+              <p>
+                <strong>Tech Stack:</strong>{" "}
+                {interview.techStack.join(", ")}
+              </p>
 
-            <p>
-              <strong>Questions:</strong>{" "}
-              {interview.numberOfQuestions}
-            </p>
-          </div>
+              <p>
+                <strong>Questions:</strong>{" "}
+                {interview.numberOfQuestions}
+              </p>
+            </div>
+          </Link>
         ))
       )}
     </div>
