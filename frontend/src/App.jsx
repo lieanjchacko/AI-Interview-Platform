@@ -5,11 +5,13 @@ import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import CreateInterview from "./pages/CreateInterview";
 import InterviewDetails from "./pages/InterviewDetails";
+import StartInterview from "./pages/StartInterview";
 import NotFound from "./pages/NotFound";
 
 function App() {
   return (
     <Routes>
+
       <Route path="/" element={<Login />} />
 
       <Route path="/register" element={<Register />} />
@@ -26,7 +28,16 @@ function App() {
         element={<InterviewDetails />}
       />
 
-      <Route path="*" element={<NotFound />} />
+      <Route
+        path="/interview/:id/start"
+        element={<StartInterview />}
+      />
+
+      <Route
+        path="*"
+        element={<NotFound />}
+      />
+
     </Routes>
   );
 }
