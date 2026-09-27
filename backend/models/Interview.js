@@ -1,3 +1,4 @@
+
 const mongoose = require("mongoose");
 
 const interviewSchema = new mongoose.Schema(
@@ -28,8 +29,33 @@ const interviewSchema = new mongoose.Schema(
           type: String,
           required: true,
         },
+
+        answer: {
+          type: String,
+          default: "",
+        },
+
+        score: {
+          type: Number,
+          default: 0,
+        },
+
+        feedback: {
+          type: String,
+          default: "",
+        },
       },
     ],
+
+    totalScore: {
+      type: Number,
+      default: 0,
+    },
+
+    evaluationCompleted: {
+      type: Boolean,
+      default: false,
+    },
 
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
@@ -43,3 +69,4 @@ const interviewSchema = new mongoose.Schema(
 );
 
 module.exports = mongoose.model("Interview", interviewSchema);
+

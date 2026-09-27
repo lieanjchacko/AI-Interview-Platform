@@ -6,6 +6,7 @@ import Dashboard from "./pages/Dashboard";
 import CreateInterview from "./pages/CreateInterview";
 import InterviewDetails from "./pages/InterviewDetails";
 import StartInterview from "./pages/StartInterview";
+import Result from "./pages/Result";
 import NotFound from "./pages/NotFound";
 
 function App() {
@@ -31,6 +32,11 @@ function App() {
       <Route
         path="/interview/:id/start"
         element={<StartInterview />}
+      />
+
+      <Route
+        path="/interview/:id/result"
+        element={<Result />}
       />
 
       <Route

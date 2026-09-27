@@ -1,96 +1,93 @@
-# AI Interview Platform
+# AI Interview Preparation Platform
 
-An AI-powered interview preparation platform built with the MERN Stack that helps users prepare for technical interviews through authentication, interview management, AI-generated questions, and personalized interview sessions.
+An AI-powered interview preparation platform built using the MERN stack and Google Gemini API.
 
-## Features Implemented
+The platform allows users to create personalized technical interviews based on their job role, experience level, and technology stack. Gemini AI generates interview questions and evaluates the candidate's answers with scores and feedback.
 
-* User Registration
-* User Login
-* JWT Authentication
-* Protected Routes
-* Get Current User API
-* Create Interview API
-* Get All Interviews API
-* Get Interview By ID API
-* MongoDB Integration
-* Password Hashing with bcrypt
-* RESTful API Architecture
+---
 
-## Tech Stack
+## Features
+
+- User Registration and Login
+- JWT-based Authentication
+- Secure Password Hashing
+- Create Personalized AI Interviews
+- AI-generated Interview Questions
+- Job Role and Experience-based Questions
+- Technology Stack Selection
+- Interactive Interview Session
+- Answer Submission
+- AI-powered Answer Evaluation
+- Question-wise Scores
+- AI-generated Feedback
+- Overall Interview Score
+- Interview Result Dashboard
+- Interview History
+- Delete Interviews
+- Responsive User Interface
+
+---
+
+## Technology Stack
+
+### Frontend
+
+- React.js
+- React Router
+- Axios
+- Tailwind CSS
+- Framer Motion
+- React Icons
+- Vite
 
 ### Backend
 
-* Node.js
-* Express.js
-* MongoDB
-* Mongoose
-* JWT Authentication
-* bcryptjs
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- JWT
+- bcryptjs
 
-## API Endpoints
+### Artificial Intelligence
 
-### User Routes
+- Google Gemini API
+- Gemini 2.5 Flash
 
-POST /api/users/register
+### Development Tools
 
-POST /api/users/login
-
-GET /api/users/me
-
-### Interview Routes
-
-POST /api/interviews
-
-GET	/api/interviews
-
-GET	/api/interviews
-
-## Project Status
-
-### Completed
-* User Authentication Module
-* JWT Authorization
-* Interview Creation API
-* Get All Interviews API
-* Get Interview By ID API
-* MongoDB Integration
-* Delete Interview API
-
-### Currently Working On
-* Gemini AI Integration
-* AI Question Generation
-* Frontend Integration (React)
-* Resume Analysis
-
-## Screenshots
-
-### User Registration API
-
-![Register API](screenshots/register-api.png)
-
-Creates a new user account successfully.
+- Visual Studio Code
+- MongoDB
+- MongoDB Compass
+- Thunder Client
+- Git
+- GitHub
 
 ---
 
-### User Login API
+## System Architecture
 
-![Login API](screenshots/login-api.png)
-
-Authenticates the user and returns a JWT token.
-
----
-
-### Create Interview API (Protected Route)
-
-![Create Interview API](screenshots/create-interview-api.png)
-
-Creates an interview record using JWT authentication and stores it in MongoDB.
-
-
-
-## Author
-
-Liean J Chacko
-B.Tech Computer Science Engineering
-CUSAT
-    
+```text
+User
+ │
+ ▼
+React Frontend
+ │
+ │ Axios / REST API
+ ▼
+Node.js + Express.js
+ │
+ ├──────────────► JWT Authentication
+ │
+ ├──────────────► MongoDB
+ │
+ └──────────────► Google Gemini API
+                       │
+                       ▼
+                AI Question Generation
+                       │
+                       ▼
+                AI Answer Evaluation
+                       │
+                       ▼
+                 Score + Feedback
